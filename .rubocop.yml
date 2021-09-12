@@ -6,6 +6,7 @@ AllCops:
   TargetRubyVersion: 3.0
   Exclude:
     - 'bin/**/*'
+    - 'db/**/*'
     - 'vendor/**/*'
     - 'script/**/*'
     - 'spec/rails_helper.rb'
