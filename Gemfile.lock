@@ -80,6 +80,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
+    geokit (1.13.1)
     globalid (0.5.2)
       activesupport (>= 5.0)
     i18n (1.8.10)
@@ -90,6 +91,7 @@ GEM
       rails (>= 4.2)
     jwt (2.2.3)
     kwalify (0.7.2)
+    loc (0.1.1)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -205,8 +207,10 @@ DEPENDENCIES
   database_cleaner-active_record
   factory_bot_rails
   faker
+  geokit
   interactor-rails
   jwt
+  loc
   pg (~> 1.1)
   pry
   puma (~> 5.0)
