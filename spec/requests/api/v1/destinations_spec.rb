@@ -26,5 +26,6 @@ RSpec.describe Api::V1::DestinationsController, type: :request do
     end
 
     it { expect(response).to have_http_status(200) }
+    it { expect(parsed_response['distance']).to be_present }
   end
 end
