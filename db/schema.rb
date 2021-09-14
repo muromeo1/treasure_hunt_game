@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_012947) do
+ActiveRecord::Schema.define(version: 2021_09_14_200209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_012947) do
     t.bigint "user_id"
     t.text "current_location", default: [], array: true
     t.text "destination", default: [], array: true
+    t.integer "radius", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_location_histories_on_user_id"
@@ -30,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_09_14_012947) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "treasure_found", default: false
+    t.integer "nth_found"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

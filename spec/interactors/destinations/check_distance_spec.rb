@@ -5,10 +5,10 @@ RSpec.describe Destinations::CheckDistance, type: :interactor do
     subject(:interactor) { described_class.call(params) }
 
     let(:params) { {} }
-    let(:email) { Faker::Internet.email }
+    let(:user) { create(:user) }
 
     context 'when geolocation is missing' do
-      let(:params) { { email: email } }
+      let(:params) { { email: user.email } }
 
       it { is_expected.to be_a_failure }
     end
@@ -20,15 +20,29 @@ RSpec.describe Destinations::CheckDistance, type: :interactor do
     end
 
     context 'when location is outside from 5 meters' do
-      let(:params) { { current_location: [-23.539346542243425, -46.49359236963995], email: email } }
+      let(:params) do
+        {
+          current_location: [50.051126753851065, 19.94572434301552],
+          email: user.email,
+          user: user
+        }
+      end
 
       it { expect(interactor.distance).to be >= 5 }
+      it { expect(interactor.history).to be_present }
     end
 
     context 'when location is within a radius of 5 meters' do
-      let(:params) { { current_location: [-23.538947306082697, -46.494344094773716], email: email } }
+      let(:params) do
+        {
+          current_location: [50.05123396420084, 19.945680757122567],
+          email: user.email,
+          user: user
+        }
+      end
 
       it { expect(interactor.distance).to be <= 5 }
+      it { expect(interactor.history).to be_present }
     end
   end
 end

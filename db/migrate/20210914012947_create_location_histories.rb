@@ -4,6 +4,7 @@ class CreateLocationHistories < ActiveRecord::Migration[6.1]
       t.references :user, index: true, foreign_key: true
       t.text :current_location, array: true, default: []
       t.text :destination, array: true, default: []
+      t.integer :radius, null: false
 
       t.timestamps
     end
