@@ -1,0 +1,2 @@
+class LocationHistory < ApplicationRecord
+end
