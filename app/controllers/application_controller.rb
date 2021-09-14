@@ -16,6 +16,8 @@ class ApplicationController < ActionController::API
   end
 
   def authorize_token
-    @authorize_token ||= Sessions::AuthorizeToken.call(request.headers)
+    @authorize_token ||= Sessions::AuthorizeToken.call(
+      token: request.headers['Authorization']
+    )
   end
 end

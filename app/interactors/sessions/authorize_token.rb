@@ -3,8 +3,7 @@ module Sessions
     include Interactor
     include BaseInteractor
 
-    requires :Authorization
-    validate :token
+    requires :token
 
     def call
       check_user_existence
@@ -13,10 +12,6 @@ module Sessions
     end
 
     private
-
-    def token
-      @token ||= context.Authorization
-    end
 
     def user_id
       @user_id ||= JsonWebToken.decode(token).try(:[], :user_id)
