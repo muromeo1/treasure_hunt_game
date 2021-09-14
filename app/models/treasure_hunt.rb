@@ -1,0 +1,3 @@
+class TreasureHunt
+  LOCATION = [-23.538928248682808, -46.49437628127928].freeze
+end
