@@ -6,6 +6,8 @@ Rails.application.routes.draw do
           get 'authenticate', to: 'authenticate'
         end
       end
+
+      post 'treasure_hunt', to: 'destinations#check_arrival'
     end
   end
 end
