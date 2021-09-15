@@ -35,7 +35,7 @@ git clone git@github.com:muromeo1/treasure_hunt_game.git
 
 2 - Change config/database.yml to your postgres username and password
 
-```
+```yml
 default: &default
   adapter: postgresql
   encoding: unicode
