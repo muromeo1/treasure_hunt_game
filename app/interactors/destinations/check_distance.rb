@@ -24,6 +24,7 @@ module Destinations
 
     def save_history
       context.history = user.location_histories.create!(
+        email: email,
         current_location: current_location,
         destination: TreasureHunt::LOCATION,
         radius: distance.in_meters

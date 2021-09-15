@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
 
       post 'treasure_hunt', to: 'destinations#check_arrival'
+      get  'analytics',     to: 'analytics#analytics'
     end
   end
 end

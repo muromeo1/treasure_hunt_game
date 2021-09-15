@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_200209) do
 
   create_table "location_histories", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "email", null: false
     t.text "current_location", default: [], array: true
     t.text "destination", default: [], array: true
     t.integer "radius", null: false
