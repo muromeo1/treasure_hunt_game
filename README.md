@@ -17,13 +17,13 @@ Rails		== 6.1.4
 Redis           >= 6.2.5
 ```
 
-#### How to install:
+#### Guide to install:
 
 - [Ruby and Rails](https://gorails.com/setup/ubuntu/20.04)
 - [PostgreSQL](https://www.postgresql.org/download/linux/ubuntu/)
 - [Redis](https://redis.io/topics/quickstart)
 
-### Installing
+### Installing and Running
 
 How to setup the environment:
 
@@ -71,10 +71,10 @@ POST http://localhost:3000/api/v1/users/
 Body:
 ```json
 {
-	"name": "Coop",
-	"email": "tars@endurance.com",
-	"password": "gravity",
-	"password_confirmation": "gravity"
+  "name": "Coop",
+  "email": "tars@endurance.com",
+  "password": "gravity",
+  "password_confirmation": "gravity"
 }
 ```
 Response:
@@ -88,13 +88,13 @@ Response:
 ## Authentication
 Route: 
 ```
-POST http://localhost:3000/api/v1/users/authenticate
+GET http://localhost:3000/api/v1/users/authenticate
 ```
 Body:
 ```json
 {
-	"email": "tars@endurance.com",
-	"password": "gravity"
+  "email": "tars@endurance.com",
+  "password": "gravity"
 }
 ```
 Response:
@@ -102,6 +102,50 @@ Response:
 {
   "status": "ok",
   "token": "yJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NzQ0NzE0MzV9.RPOt01FcfER6tTbClsHq5GTKbx3HWfOAYHy9YV4YmlQ"
+}
+```
+
+## Send location
+Route: 
+```
+POST http://localhost:3000/api/v1/treasure_hunt
+```
+Body:
+```json
+{
+  "current_location": ["0", "0"],
+  "email": "tars@endurance.com"
+}
+```
+Response:
+```json
+{
+  "status": "ok",
+  "distance": 343
+}
+```
+
+## Analytics
+Route: 
+```
+GET http://localhost:3000/api/v1/analytics
+```
+Body:
+```json
+{
+  "start_time": ["2020-09-23 12:00:00"],
+  "end_time": "2020-09-24 19:00:00",
+  "radius": 1000
+}
+```
+Response:
+```json
+{
+  "status": "ok",
+  "requests": [
+    { "email": "tars@endurance.com", "current_location": ["2", "-8"] },
+    { "email": "coop@stay.com", "current_location": ["87", "-2"] }
+  ]
 }
 ```
 
