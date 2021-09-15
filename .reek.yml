@@ -4,6 +4,8 @@ detectors:
 
   UtilityFunction:
     public_methods_only: true
+    exclude:
+      - TreasureHuntPreview
 
   UncommunicativeModuleName:
     accept:

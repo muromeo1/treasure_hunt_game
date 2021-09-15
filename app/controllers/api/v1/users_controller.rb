@@ -7,9 +7,9 @@ module Api
         result = Users::Create.call(user_params)
 
         if result.success?
-          render_json(token: result.token)
+          render_json(status: 'ok', token: result.token)
         else
-          render_json(error: result.error)
+          render_json(status: 'error', description: result.error)
         end
       end
 
@@ -17,9 +17,9 @@ module Api
         result = Users::Authenticate.call(user_params)
 
         if result.success?
-          render_json(token: result.token)
+          render_json(status: 'ok', token: result.token)
         else
-          render_json(error: result.error)
+          render_json(status: 'error', description: result.error)
         end
       end
 

@@ -14,7 +14,9 @@ module Api
       private
 
       def destinations_params
-        params.permit(:email, current_location: [])
+        new_params = params.permit(:email, current_location: [])
+        new_params[:email] ||= current_user.email
+        new_params.merge({ user: current_user })
       end
     end
   end

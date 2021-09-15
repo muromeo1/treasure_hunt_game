@@ -30,19 +30,24 @@ module Destinations
       )
     end
 
-    def check_arrival
-      return unless near_from_destination?
+    def send_congratulations_email
+      return if user.treasure_found
 
-      send_congratulations_email
       user.found_the_treasure
+
+      TreasureHuntMailer.with(
+        treasure_location: TreasureHunt::LOCATION,
+        nth_found: user.nth_found,
+        email: email
+      ).congratulations.deliver_now
+    end
+
+    def check_arrival
+      send_congratulations_email if near_from_destination?
     end
 
     def near_from_destination?
       distance.in_meters <= 5
-    end
-
-    def send_congratulations_email
-      'email' unless user.treasure_found
     end
 
     def return_distance
